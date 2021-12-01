@@ -1,4 +1,6 @@
 :root {
+  --light: #ffffff;
+  --dark: #000000;
   --bg-color: #ffffff;
   --text-color: #000000;
   --shadow: rgba(0, 0, 0, 0.12);
@@ -68,4 +70,9 @@ code {
   min-height: 9em;
   min-width: 9em;
   margin-right: 5px;
+}
+
+.App {
+  background: var(--theme-page-background);
+  color: var(--theme-page-text);
 }
