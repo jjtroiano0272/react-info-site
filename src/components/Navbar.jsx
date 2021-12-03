@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import brandLogo from '../image/logoipsum-logo-14.svg';
 
-const Navbar = () => {
+const Navbar = ({ user, toggleTheme }) => {
   return (
-    <nav className='navbar navbar-expand-lg navbar-light bg-light px-3'>
-      <a className='navbar-brand' href='#'>
+    <nav className='navbar navbar-expand-lg px-3 sb-1 '>
+      <a className='navbar-brand' href='/'>
         <img src={brandLogo} alt='Website logo' />
       </a>
       <button
@@ -19,7 +19,10 @@ const Navbar = () => {
         <span className='navbar-toggler-icon'></span>
       </button>
 
-      <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+      <div
+        className='collapse navbar-collapse d-flex'
+        id='navbarSupportedContent'
+      >
         <ul className='navbar-nav mr-auto mx-2'>
           <li className='nav-item active'>
             <a className='nav-link' href='#'>
@@ -67,19 +70,26 @@ const Navbar = () => {
             </a>
           </li>
         </ul>
+        {/* <button className='btn btn-md btn-dark ms-auto' onClick={toggleTheme}>
+          !
+        </button> */}
+        <div class='form-check form-switch ms-auto'>
+          <input
+            onChange={toggleTheme}
+            type='checkbox'
+            class='form-check-input'
+            id='darkSwitch'
+          />
+          <label class='custom-control-label' htmlFor='darkSwitch'></label>
+        </div>
+
         <form className='form-inline my-2 my-lg-0 ms-auto'>
           <input
-            className='form-control mr-sm-2 '
+            className='form-control mr-sm-2 search-query'
             type='search'
-            placeholder='Search'
+            placeholder='Search [CTRL+/]'
             aria-label='Search'
           />
-          {/* <button
-            className='btn btn-outline-success my-2 my-sm-0'
-            type='submit'
-          >
-            Search
-          </button> */}
         </form>
       </div>
     </nav>

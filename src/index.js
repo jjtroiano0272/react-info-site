@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import $ from 'jquery';
 import reportWebVitals from './reportWebVitals';
+import Layout from './components/Layout';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -3,9 +3,10 @@ import ThemeContext from '../theme-context';
 
 const Layout = () => {
   const theme = useContext(ThemeContext);
+
   return (
     <div style={theme}>
-      <div>{JSON.stringify(theme)}</div>
+      <p className='text-warning'>{JSON.stringify(theme)}</p>
     </div>
   );
 };
