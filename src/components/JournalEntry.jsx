@@ -1,6 +1,6 @@
 import React, { cloneElement, useState } from 'react';
 
-const JournalEntry = (props) => {
+export default function JournalEntry(props) {
   const {
     id,
     title,
@@ -39,6 +39,4 @@ const JournalEntry = (props) => {
       </div>
     </div>
   );
-};
-
-export default JournalEntry;
+}

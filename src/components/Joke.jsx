@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Article from './Article';
 
 // const Joke = ({ setup, punchline }) => {
-function Joke({ src, numPosts, hr }) {
+export default function Joke({ src, numPosts, hr }) {
   const [articles, setArticles] = useState([]);
   const [subreddit, setSubreddit] = useState('dadjokes');
   const redditJokeEndpoint = `https://www.reddit.com/r/${src}.json?limit=${numPosts}`;
@@ -18,7 +18,6 @@ function Joke({ src, numPosts, hr }) {
       res.json().then((data) => {
         if (data != null) {
           setArticles(data.data.children);
-          console.log(data);
         }
       });
     });
@@ -38,5 +37,3 @@ function Joke({ src, numPosts, hr }) {
     </div>
   );
 }
-
-export default Joke;

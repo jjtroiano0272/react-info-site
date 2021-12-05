@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import brandLogo from '../image/logoipsum-logo-14.svg';
 
-const Footer = () => {
+export default function Footer() {
   return (
     <div className='container'>
-      <footer className='pt-4 my-md-5 pt-md-5 border-top'>
+      <footer className='pt-4 pt-md-5 border-top'>
         <div className='row'>
           <div className='col-12 col-md'>
             <div className='d-block mb-3 text-muted'>
@@ -14,11 +14,8 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className='col-6 col-md'></div>
         </div>
       </footer>
     </div>
   );
-};
-
-export default Footer;
+}

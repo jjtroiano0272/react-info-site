@@ -1,10 +1,23 @@
 import React, { useState } from 'react';
+import { useHotkeys } from 'react-hotkeys-hook';
+import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
 import brandLogo from '../image/logoipsum-logo-14.svg';
 
-const Navbar = ({ user, toggleTheme }) => {
+const Navbar = ({ user, toggleDarkMode, inputRef }) => {
+  // Switch theme
+  useHotkeys('ctrl+\\', () => {
+    toggleDarkMode();
+    // TODO: ALSO CHANGE THE EFFIN BOX!
+  });
+
+  // Focus on search box
+  useHotkeys('ctrl+/', () => {
+    inputRef.current.focus();
+  });
+
   return (
-    <nav className='navbar navbar-expand-lg px-3 sb-1 '>
-      <a className='navbar-brand' href='/'>
+    <nav className='navbar navbar-expand-lg px-3 sb-1'>
+      <a className='navbar-brand' href='#'>
         <img src={brandLogo} alt='Website logo' />
       </a>
       <button
@@ -70,27 +83,33 @@ const Navbar = ({ user, toggleTheme }) => {
             </a>
           </li>
         </ul>
-        {/* <button className='btn btn-md btn-dark ms-auto' onClick={toggleTheme}>
-          !
-        </button> */}
-        <div class='form-check form-switch ms-auto'>
-          <input
-            onChange={toggleTheme}
-            type='checkbox'
-            class='form-check-input'
-            id='darkSwitch'
-          />
-          <label class='custom-control-label' htmlFor='darkSwitch'></label>
-        </div>
 
-        <form className='form-inline my-2 my-lg-0 ms-auto'>
-          <input
-            className='form-control mr-sm-2 search-query'
-            type='search'
-            placeholder='Search [CTRL+/]'
-            aria-label='Search'
-          />
-        </form>
+        <ul className='navbar-nav mr-auto ms-auto'>
+          <li className='nav-item active my-auto'>
+            <div className='form-check form-switch ms-auto align-middle'>
+              <div className='custom-control custom-switch'>
+                <input
+                  type='checkbox'
+                  onChange={toggleDarkMode}
+                  className='form-check-input'
+                  id='toggle'
+                />
+              </div>
+              {/* <label className='custom-control-label' htmlFor='darkSwitch'></label> */}
+            </div>
+          </li>
+          <li className='nav-item'>
+            <form className='form-inline my-2 my-lg-0 ms-auto'>
+              <input
+                type='search'
+                ref={inputRef}
+                className='form-control mr-sm-2 search-query'
+                placeholder='Search [CTRL+/]'
+                aria-label='Search'
+              />
+            </form>
+          </li>
+        </ul>
       </div>
     </nav>
   );

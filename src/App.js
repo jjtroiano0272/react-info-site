@@ -1,73 +1,73 @@
-import React, { useState, useEffect } from 'react';
-// import { ThemeProvider } from 'styled-components';
-// import { GlobalStyles } from './components/globalStyles';
-// import { useDarkMode } from './components/useDarkMode';
-// import { lightTheme, darkTheme } from './components/Themes';
+import React, { useState, useEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Navbar from './components/Navbar';
 import Main from './components/Main';
-import Card from './components/Card';
 import Joke from './components/Joke';
 import Footer from './components/Footer';
-import TravelJournal from './components/TravelJournal';
 import JournalEntry from './components/JournalEntry';
-// import Toggle from './components/Toggler';
-import data from './data_experiences';
+import data_experiences from './data_experiences';
 import data_journal from './data_journal';
-import './theme.css';
-import { Button } from './components/button/Button';
-import Layout from './components/Layout';
-import ThemeContext, { themes } from './theme-context';
+import CardCollection from './components/CardCollection';
+import TravelJournal from './components/TravelJournal';
 
 export default function App() {
-  // const [theme, themeToggler, mountedComponent] = useDarkMode();
-  // const themeMode = theme === 'light' ? lightTheme : darkTheme;
+  const inputRef = useRef();
 
-  // TODO: This should be moved to its own component
-  const Cards = data.map((item) => {
-    return <Card key={item.id} item={item} />;
-  });
+  // START outside code
+  const storedDarkMode = localStorage.getItem('DARK_MODE');
+  const [darkMode, setDarkMode] = useState(storedDarkMode);
+  // TODO: there should be a step in here where the input switch's T/F value gets set/passed down
 
-  const Journal = data_journal.map((item) => {
-    return <JournalEntry key={item.id} item={item} />;
-  });
+  useEffect(() => {
+    localStorage.setItem('DARK_MODE', darkMode);
+    console.log('useEffect mounted, run. darkMode is: ', darkMode);
+  }, [darkMode]);
 
+  const toggleDarkMode = () => {
+    // TODO: refacotr
+    setDarkMode(!darkMode);
+  };
+  console.log('toggleDarkMode completed. darkMode: ', darkMode);
+
+  // END outside code
+
+  // const currentTheme = localStorage.getItem('theme');
+  // console.log(currentTheme);
+  // if (currentTheme) {
+  //   document.documentElement.setAttribute('data-theme', currentTheme);
+  //   console.log(currentTheme);
+  //   if (currentTheme === 'dark') {
+  //       toggleSwitch.checked = true;
+  //   }
+  // }
   // if (!mountedComponent) return <div />;
-
-  const [theme, setTheme] = useState(themes.dark);
-  const toggleTheme = () => {
-    // theme === themes.dark ? setTheme(themes.light) : setTheme(themes.dark);
-    // console.log('Toggled to ', theme);
-    const $ = document.documentElement;
-    $.getAttribute('data-theme') === 'dark'
-      ? $.setAttribute('data-theme', 'light')
-      : $.setAttribute('data-theme', 'dark');
-  };
-
-  const changeClass = () => {
-    // document.documentElement.classList.toggle('dark');
-    // conditions
-    document.body.classList.toggle('dark-theme');
-  };
+  // const toggleTheme = () => {
+  //   document.documentElement.getAttribute('data-theme') === 'dark'
+  //     ? document.documentElement.setAttribute('data-theme', 'light')
+  //     : document.documentElement.setAttribute('data-theme', 'dark');
+  // };
 
   return (
-    <>
-      <ThemeContext.Provider value={theme}>
-        {/* <Layout /> */}
-
-        {/* <Button
-          label='Click Me'
-          onClick={theme === 'light' ? setTheme('dark') : 'light'}
-        /> */}
-        <Navbar toggleTheme={toggleTheme} />
+    // <div document.documentElement.s={darkMode ? 'dark' : 'light'}>
+    <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
+      {/* TODO: Add prop user={user} 
+          const [user, setUser] = useState(auth.getCurrentUser());
+          import auth from './services/authService';
+          import { Switch } from 'react-router-dom';
+          */}
+      <Navbar toggleDarkMode={toggleDarkMode} inputRef={inputRef} />
+      <main className='container'>
+        {/* <div className='container-fluid py-2'>
+              <div className='d-flex flex-row flex-nowrap'>{Cards}</div>
+            </div> */}
         <Main />
-        <div className='container-fluid py-2'>
-          <div className='d-flex flex-row flex-nowrap'>{Cards}</div>
-        </div>
+        <CardCollection data={data_experiences} />
         <Joke src={'dadjokes'} numPosts={3} hr={true} />
         <Joke src={'antijokes'} numPosts={1} hr={true} />
-        {Journal}
+        <TravelJournal data={data_journal} />
         <Footer />
-      </ThemeContext.Provider>
-    </>
+      </main>
+    </div>
   );
 }
