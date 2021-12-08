@@ -12,7 +12,7 @@ function Article(props) {
       {!stickied && (
         <>
           <h5>{title}</h5>
-          <p className='text-muted text-dark'>
+          <p className='text-secondary'>
             <em>
               <small>{selftext}</small>
             </em>

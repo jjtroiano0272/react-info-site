@@ -19,12 +19,26 @@
 
 [data-theme='dark'] {
   --bg-color: #161625;
-  --font-color: #e1e1ff;
+  --font-color: #c2c2da;
   --primary-color: #9a97f3;
-  --secondary-color: #818cab;
+  --secondary-color: #8a97bb;
   --heading-color: #818cab;
+  --confirm--color: #00897b;
+  --warning--color: #30349f;
+  --remove--color: #c62828;
+  --help--color: #673ab7;
   --shadow: rgba(255, 255, 255, 0.12);
   --navbar-text: rgba(255, 255, 255, 0.55);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.pointer {
+  text-decoration: none !important;
+  cursor: pointer;
+  color: var(--secondary-color);
 }
 
 .App {
@@ -32,8 +46,11 @@
   color: var(--font-color);
 }
 
-h1 {
-  color: var(--secondary-color);
+h1,
+h2,
+h3,
+h4 {
+  color: var(--heading-color);
 }
 
 a.nav-link {
@@ -125,17 +142,15 @@ input.search-query {
   float: none;
 }
 
-.col-xs-4 {
-  color: white;
-  font-size: 24px;
-  padding-bottom: 20px;
-  padding-top: 18px;
+.react-darkMode-switch {
+  /* margin-bottom: 2rem; */
+  margin: 0.9rem;
+  /* size: 120; */
 }
 
-.col-xs-4:nth-child(2n + 1) {
-  background: green;
-}
-
-.col-xs-4:nth-child(2n + 2) {
-  background: black;
+@media (prefers-color-scheme: dark) {
+  .App {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+  }
 }

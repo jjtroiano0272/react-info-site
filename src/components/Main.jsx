@@ -9,7 +9,7 @@ const Main = () => {
           <img className='img-fluid py-5' src={heroPhoto} alt='Hero photo' />
           <h1 className='py-3'>Online experiences</h1>
           <div className='row text-center'>
-            <p className='text-muted'>
+            <p className='text-secondary'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit,
               beatae quis voluptatem numquam soluta ea voluptatum odit dolore?
               Blanditiis illo incidunt mollitia, alias maxime aliquam corrupti

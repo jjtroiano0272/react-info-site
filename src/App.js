@@ -12,51 +12,32 @@ import CardCollection from './components/CardCollection';
 import TravelJournal from './components/TravelJournal';
 
 export default function App() {
-  const inputRef = useRef();
-
-  // START outside code
-  const storedDarkMode = localStorage.getItem('DARK_MODE');
-  const [darkMode, setDarkMode] = useState(storedDarkMode);
-  // TODO: there should be a step in here where the input switch's T/F value gets set/passed down
-
-  useEffect(() => {
-    localStorage.setItem('DARK_MODE', darkMode);
-    console.log('useEffect mounted, run. darkMode is: ', darkMode);
-  }, [darkMode]);
+  // const storedDarkMode = localStorage.getItem('DARK_MODE');
+  // const [darkMode, setDarkMode] = useState(storedDarkMode);
+  const [darkMode, setDarkMode] = useState(() =>
+    JSON.parse(localStorage.getItem('DARK_MODE'))
+  );
 
   const toggleDarkMode = () => {
-    // TODO: refacotr
+    localStorage.setItem('DARK_MODE', !darkMode);
     setDarkMode(!darkMode);
   };
-  console.log('toggleDarkMode completed. darkMode: ', darkMode);
+  useEffect(() => {
+    localStorage.setItem('DARK_MODE', darkMode);
+    // storedDarkMode = localStorage.getItem('DARK_MODE');
+  }, [darkMode]);
 
-  // END outside code
-
-  // const currentTheme = localStorage.getItem('theme');
-  // console.log(currentTheme);
-  // if (currentTheme) {
-  //   document.documentElement.setAttribute('data-theme', currentTheme);
-  //   console.log(currentTheme);
-  //   if (currentTheme === 'dark') {
-  //       toggleSwitch.checked = true;
-  //   }
-  // }
-  // if (!mountedComponent) return <div />;
-  // const toggleTheme = () => {
-  //   document.documentElement.getAttribute('data-theme') === 'dark'
-  //     ? document.documentElement.setAttribute('data-theme', 'light')
-  //     : document.documentElement.setAttribute('data-theme', 'dark');
-  // };
+  // console.log('storedDark: ', storedDarkMode);
+  // console.log('darkMode state: ', darkMode);
 
   return (
-    // <div document.documentElement.s={darkMode ? 'dark' : 'light'}>
     <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
       {/* TODO: Add prop user={user} 
           const [user, setUser] = useState(auth.getCurrentUser());
           import auth from './services/authService';
           import { Switch } from 'react-router-dom';
           */}
-      <Navbar toggleDarkMode={toggleDarkMode} inputRef={inputRef} />
+      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className='container'>
         {/* <div className='container-fluid py-2'>
               <div className='d-flex flex-row flex-nowrap'>{Cards}</div>

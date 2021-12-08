@@ -7,10 +7,10 @@ export default function Footer() {
       <footer className='pt-4 pt-md-5 border-top'>
         <div className='row'>
           <div className='col-12 col-md'>
-            <div className='d-block mb-3 text-muted'>
+            <div className='d-block mb-3 text-secondary'>
               <a className='navbar-brand' href='#'>
                 <img src={brandLogo} alt='Website logo' />
-                <small className='d-block mb-3 text-muted'>© 2021</small>
+                <small className='d-block mb-3 text-secondary'>© 2021</small>
               </a>
             </div>
           </div>

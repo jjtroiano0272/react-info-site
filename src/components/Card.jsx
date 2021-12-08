@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import starIcon from '../image/starIcon.png';
+import { BsFillStarFill } from 'react-icons/bs';
 
 export default function Card(props) {
   const { openSpots, location, coverImg, title, price } = props.item;
@@ -23,10 +23,10 @@ export default function Card(props) {
           />
           <div className='card-body'>
             <h5 className='card-title d-flex'>
-              <img src={starIcon} />
+              <BsFillStarFill className='me-2' />
               <span>{rating} • </span>
-              <span>({reviewCount})</span>
-              <span>{location} </span>
+              <span className='text-secondary'>({reviewCount})</span>
+              <span className='ms-2'>{location} </span>
             </h5>
             <p className='card-text'>{title}</p>
             <a href='#' className='btn btn-primary'>
@@ -38,5 +38,3 @@ export default function Card(props) {
     </div>
   );
 }
-
-// export default Card;

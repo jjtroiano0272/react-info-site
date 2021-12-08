@@ -1,18 +1,25 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
+import { DarkModeSwitch } from 'react-toggle-dark-mode';
+
 import brandLogo from '../image/logoipsum-logo-14.svg';
 
-const Navbar = ({ user, toggleDarkMode, inputRef }) => {
+const Navbar = ({ user, darkMode, toggleDarkMode }) => {
+  const [inputSwitch, setInputSwitch] = useState(null);
+  const inputRef = useRef(null);
+
+  // TODO: ALSO CHANGE THE EFFIN BOX!
   // Switch theme
-  useHotkeys('ctrl+\\', () => {
+  useHotkeys('CTRL+/, CMD+/', () => {
+    console.log('Switch theme');
     toggleDarkMode();
-    // TODO: ALSO CHANGE THE EFFIN BOX!
   });
 
   // Focus on search box
-  useHotkeys('ctrl+/', () => {
+  useHotkeys('/', () => {
     inputRef.current.focus();
+    console.log('search box focused');
   });
 
   return (
@@ -85,14 +92,14 @@ const Navbar = ({ user, toggleDarkMode, inputRef }) => {
         </ul>
 
         <ul className='navbar-nav mr-auto ms-auto'>
-          <li className='nav-item active my-auto'>
+          <li className='nav-item active my-auto ms-auto align-middle'>
             <div className='form-check form-switch ms-auto align-middle'>
               <div className='custom-control custom-switch'>
-                <input
-                  type='checkbox'
-                  onChange={toggleDarkMode}
-                  className='form-check-input'
-                  id='toggle'
+                <DarkModeSwitch
+                  className='react-darkMode-switch'
+                  checked={darkMode}
+                  onClick={toggleDarkMode}
+                  // size={120}
                 />
               </div>
               {/* <label className='custom-control-label' htmlFor='darkSwitch'></label> */}
@@ -104,7 +111,7 @@ const Navbar = ({ user, toggleDarkMode, inputRef }) => {
                 type='search'
                 ref={inputRef}
                 className='form-control mr-sm-2 search-query'
-                placeholder='Search [CTRL+/]'
+                placeholder='Search [ / ]'
                 aria-label='Search'
               />
             </form>
