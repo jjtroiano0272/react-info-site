@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import heroPhoto from '../image/group-grid-photos.png';
 
-const Main = () => {
+export default function Main() {
   return (
     <div className='container'>
       <div className='row justify-content-center'>
@@ -20,6 +20,4 @@ const Main = () => {
       </div>
     </div>
   );
-};
-
-export default Main;
+}

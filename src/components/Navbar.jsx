@@ -2,22 +2,24 @@ import React, { useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-
+import { Command } from 'phosphor-react';
 import brandLogo from '../image/logoipsum-logo-14.svg';
 
 const Navbar = ({ user, darkMode, toggleDarkMode }) => {
+  // TODO: Make dynamic to actually detect user's OS. If mobile, do not display!
+  const userOS = 'Mac';
   const [inputSwitch, setInputSwitch] = useState(null);
   const inputRef = useRef(null);
 
   // TODO: ALSO CHANGE THE EFFIN BOX!
   // Switch theme
-  useHotkeys('CTRL+/, CMD+/', () => {
+  useHotkeys('CTRL+\\, CMD+\\', () => {
     console.log('Switch theme');
     toggleDarkMode();
   });
 
   // Focus on search box
-  useHotkeys('/', () => {
+  useHotkeys('CTRL+/, CMD+/', () => {
     inputRef.current.focus();
     console.log('search box focused');
   });
@@ -93,29 +95,31 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
 
         <ul className='navbar-nav mr-auto ms-auto'>
           <li className='nav-item active my-auto ms-auto align-middle'>
-            <div className='form-check form-switch ms-auto align-middle'>
-              <div className='custom-control custom-switch'>
-                <DarkModeSwitch
-                  className='react-darkMode-switch'
-                  checked={darkMode}
-                  onClick={toggleDarkMode}
-                  // size={120}
-                />
-              </div>
-              {/* <label className='custom-control-label' htmlFor='darkSwitch'></label> */}
-            </div>
-          </li>
-          <li className='nav-item'>
-            <form className='form-inline my-2 my-lg-0 ms-auto'>
-              <input
-                type='search'
-                ref={inputRef}
-                className='form-control mr-sm-2 search-query'
-                placeholder='Search [ / ]'
-                aria-label='Search'
+            <span className='d-inline-block float-left'>
+              <DarkModeSwitch
+                className='react-darkMode-switch'
+                checked={darkMode}
+                onClick={toggleDarkMode}
+                // size={120}
               />
-            </form>
+            </span>
+            <span className='d-inline-block'>
+              <form className='form-inline my-2 my-lg-0 ms-auto'>
+                <input
+                  type='search'
+                  ref={inputRef}
+                  className='form-control mr-sm-2 search-query'
+                  placeholder={
+                    userOS === 'Mac'
+                      ? `Search [ CMD + / ]`
+                      : `Search [ CTRL + / ]`
+                  }
+                  aria-label='Search'
+                />
+              </form>
+            </span>
           </li>
+          <li className='nav-item'></li>
         </ul>
       </div>
     </nav>

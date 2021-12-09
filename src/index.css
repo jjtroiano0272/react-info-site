@@ -29,6 +29,7 @@
   --help--color: #673ab7;
   --shadow: rgba(255, 255, 255, 0.12);
   --navbar-text: rgba(255, 255, 255, 0.55);
+  --border-color: #858585;
 }
 
 .text-secondary {
@@ -90,6 +91,7 @@ code {
 
 .card {
   background-color: var(--bg-color);
+  border-color: var(--border-color) !important;
 }
 
 .cards-list {
@@ -123,6 +125,10 @@ code {
 }
 
 input.search-query {
+  background-color: var(--bg-color);
+  color: var(--font-color);
+}
+input.search-query:focus {
   background-color: var(--bg-color);
   color: var(--font-color);
 }

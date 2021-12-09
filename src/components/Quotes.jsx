@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Article from './Article';
 
 // const Joke = ({ setup, punchline }) => {
-export default function Joke({ src, numPosts, hr }) {
+export default function Quotes({ src, numPosts, hr }) {
   const [articles, setArticles] = useState([]);
   const [subreddit, setSubreddit] = useState('dadjokes');
   const redditJokeEndpoint = `https://www.reddit.com/r/${src}.json?limit=${numPosts}`;
@@ -25,8 +25,6 @@ export default function Joke({ src, numPosts, hr }) {
 
   return (
     <div className='container my-5'>
-      {/* <h1>{setup}</h1>
-      <p>{punchline}</p> */}
       {hr && <hr />}
       {/* Map such that attr stickied which is on the same level as title, is false */}
       {articles != null

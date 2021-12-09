@@ -1,19 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, Link } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Main from './components/Main';
-import Joke from './components/Joke';
+import Quotes from './components/Quotes';
 import Footer from './components/Footer';
-import JournalEntry from './components/JournalEntry';
-import data_experiences from './data_experiences';
-import data_journal from './data_journal';
 import CardCollection from './components/CardCollection';
 import TravelJournal from './components/TravelJournal';
+import data_experiences from './data_experiences';
+import data_journal from './data_journal';
 
 export default function App() {
-  // const storedDarkMode = localStorage.getItem('DARK_MODE');
-  // const [darkMode, setDarkMode] = useState(storedDarkMode);
   const [darkMode, setDarkMode] = useState(() =>
     JSON.parse(localStorage.getItem('DARK_MODE'))
   );
@@ -22,13 +17,10 @@ export default function App() {
     localStorage.setItem('DARK_MODE', !darkMode);
     setDarkMode(!darkMode);
   };
+
   useEffect(() => {
     localStorage.setItem('DARK_MODE', darkMode);
-    // storedDarkMode = localStorage.getItem('DARK_MODE');
   }, [darkMode]);
-
-  // console.log('storedDark: ', storedDarkMode);
-  // console.log('darkMode state: ', darkMode);
 
   return (
     <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
@@ -39,13 +31,10 @@ export default function App() {
           */}
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className='container'>
-        {/* <div className='container-fluid py-2'>
-              <div className='d-flex flex-row flex-nowrap'>{Cards}</div>
-            </div> */}
         <Main />
         <CardCollection data={data_experiences} />
-        <Joke src={'dadjokes'} numPosts={3} hr={true} />
-        <Joke src={'antijokes'} numPosts={1} hr={true} />
+        <Quotes src={'dadjokes'} numPosts={3} hr={true} />
+        <Quotes src={'antijokes'} numPosts={1} hr={true} />
         <TravelJournal data={data_journal} />
         <Footer />
       </main>

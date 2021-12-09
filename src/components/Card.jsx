@@ -11,9 +11,10 @@ export default function Card(props) {
   } else if (location === 'Online') {
     badgeText = 'ONLINE';
   }
+
   return (
     <div className='container my-5'>
-      <div className='card w-18'>
+      <div className={'card w-18'}>
         <div className='embed-responsive embed-responsive-16-by-9'>
           {badgeText && <div className='card-badge'>{badgeText}</div>}
           <img
