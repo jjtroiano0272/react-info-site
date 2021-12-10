@@ -14,9 +14,11 @@ Created as part of the Scrimba course, now expanded to support incoming data fro
 - [ ] Fixing the card deck
 - [ ] oAuth
 - [ ] Login forms
-- [ ] Create a JournalEntry
+- [ ] Permit user to create a JournalEntry
 - [ ] Read dark/light mode from system-setting
 - [ ] Styling the dark/light switcher as moon/sun: https://codepen.io/RefractedColor/pen/mdWZRPQ (4DEC21)
+- [ ] Sentry II logger
+- [ ] Raven
 
 ### Notes & Credits
 
