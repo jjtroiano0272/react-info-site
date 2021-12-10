@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/react-info-site/static/css/main.3b4614ab.chunk.css",
+    "main.js": "/react-info-site/static/js/main.a84a89cd.chunk.js",
+    "main.js.map": "/react-info-site/static/js/main.a84a89cd.chunk.js.map",
+    "runtime-main.js": "/react-info-site/static/js/runtime-main.35b1815e.js",
+    "runtime-main.js.map": "/react-info-site/static/js/runtime-main.35b1815e.js.map",
+    "static/css/2.a75f5a2c.chunk.css": "/react-info-site/static/css/2.a75f5a2c.chunk.css",
+    "static/js/2.90f9acac.chunk.js": "/react-info-site/static/js/2.90f9acac.chunk.js",
+    "static/js/2.90f9acac.chunk.js.map": "/react-info-site/static/js/2.90f9acac.chunk.js.map",
+    "static/js/3.9cda1e3c.chunk.js": "/react-info-site/static/js/3.9cda1e3c.chunk.js",
+    "static/js/3.9cda1e3c.chunk.js.map": "/react-info-site/static/js/3.9cda1e3c.chunk.js.map",
+    "index.html": "/react-info-site/index.html",
+    "static/css/2.a75f5a2c.chunk.css.map": "/react-info-site/static/css/2.a75f5a2c.chunk.css.map",
+    "static/css/main.3b4614ab.chunk.css.map": "/react-info-site/static/css/main.3b4614ab.chunk.css.map",
+    "static/js/2.90f9acac.chunk.js.LICENSE.txt": "/react-info-site/static/js/2.90f9acac.chunk.js.LICENSE.txt",
+    "static/media/group-grid-photos.1d18b47b.png": "/react-info-site/static/media/group-grid-photos.1d18b47b.png",
+    "static/media/logoipsum-logo-14.f106c737.svg": "/react-info-site/static/media/logoipsum-logo-14.f106c737.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.35b1815e.js",
+    "static/css/2.a75f5a2c.chunk.css",
+    "static/js/2.90f9acac.chunk.js",
+    "static/css/main.3b4614ab.chunk.css",
+    "static/js/main.a84a89cd.chunk.js"
+  ]
+}
