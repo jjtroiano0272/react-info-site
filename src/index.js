@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/js/bootstrap.js';
-import $ from 'jquery';
+// import 'bootstrap';
 import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css';
+// TODO: May not be necessary...
+import 'bootstrap/dist/js/bootstrap';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

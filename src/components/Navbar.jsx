@@ -2,10 +2,10 @@ import React, { useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { Command } from 'phosphor-react';
 import brandLogo from '../image/logoipsum-logo-14.svg';
+import { Command } from 'phosphor-react';
 
-const Navbar = ({ user, darkMode, toggleDarkMode }) => {
+export default function Navbar({ user, darkMode, toggleDarkMode }) {
   // TODO: Make dynamic to actually detect user's OS. If mobile, do not display!
   const userOS = 'Mac';
   const [inputSwitch, setInputSwitch] = useState(null);
@@ -29,28 +29,21 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
       <a className='navbar-brand' href='#'>
         <img src={brandLogo} alt='Website logo' />
       </a>
+
       <button
         className='navbar-toggler'
         type='button'
-        data-toggle='collapse'
-        data-target='#navbarSupportedContent'
-        aria-controls='navbarSupportedContent'
+        data-bs-toggle='collapse'
+        data-bs-target='#navbarNavAltMarkup'
+        aria-controls='navbarNavAltMarkup'
         aria-expanded='false'
         aria-label='Toggle navigation'
       >
         <span className='navbar-toggler-icon'></span>
       </button>
 
-      <div
-        className='collapse navbar-collapse d-flex'
-        id='navbarSupportedContent'
-      >
+      <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <ul className='navbar-nav mr-auto mx-2'>
-          <li className='nav-item active'>
-            <a className='nav-link' href='#'>
-              Home
-            </a>
-          </li>
           <li className='nav-item'>
             <a className='nav-link' href='#'>
               Travel Journal
@@ -62,7 +55,7 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
               href='#'
               id='navbarDropdown'
               role='button'
-              data-toggle='dropdown'
+              data-bs-toggle='dropdown'
               aria-haspopup='true'
               aria-expanded='false'
             >
@@ -124,6 +117,4 @@ const Navbar = ({ user, darkMode, toggleDarkMode }) => {
       </div>
     </nav>
   );
-};
-
-export default Navbar;
+}

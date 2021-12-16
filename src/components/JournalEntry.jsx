@@ -17,18 +17,22 @@ export default function JournalEntry(props) {
   return (
     <div className='container my-5'>
       <div className='row'>
-        <div className='col-2 d-flex'>
+        <div className='col-lg-2 col-md-3 d-flex ratio ratio-16x9 mb-3 '>
           <img
             className='img-fluid rounded'
             src={`https://source.unsplash.com/${imageID}`}
           />
         </div>
-        <div className='col-10'>
+        <div className='col-lg-10 col-md-9'>
           <div className='d-flex'>
-            <a href={googleMapsUrl} className='me-3 pointer'>
-              <BiMap style={{ fontSize: '3em' }} />
-            </a>
-            <h1>{title}</h1>
+            <span className='d-inline-block float-left'>
+              <h1>{title}</h1>
+            </span>
+            <span className='d-inline-block'>
+              <a href={googleMapsUrl} className='me-3 pointer'>
+                <BiMap style={{ fontSize: '3em' }} />
+              </a>
+            </span>
           </div>
           <h4 className='text-secondary'>{location}</h4>
           <p className='muted'></p>
