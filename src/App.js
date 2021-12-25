@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useRouteMatch,
+  useParams,
+} from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Main from './components/Main';
+import Home from './components/Home';
 import Quotes from './components/Quotes';
 import Footer from './components/Footer';
 import CardCollection from './components/CardCollection';
@@ -23,21 +31,20 @@ export default function App() {
   }, [darkMode]);
 
   return (
-    <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
-      {/* TODO: Add prop user={user} 
-          const [user, setUser] = useState(auth.getCurrentUser());
-          import auth from './services/authService';
-          import { Switch } from 'react-router-dom';
-          */}
-      <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-      <main className='container'>
-        <Main />
-        <CardCollection data={data_experiences} />
-        <Quotes src={'dadjokes'} numPosts={3} hr={true} />
-        <Quotes src={'antijokes'} numPosts={1} hr={true} />
-        <TravelJournal data={data_journal} />
+    <Router>
+      <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
+        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+        <main className='container'>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route
+              path='/travel-journal'
+              element={<TravelJournal data={data_journal} />}
+            />
+          </Routes>
+        </main>
         <Footer />
-      </main>
-    </div>
+      </div>
+    </Router>
   );
 }

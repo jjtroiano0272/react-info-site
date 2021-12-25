@@ -16,7 +16,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <div className='d-flex'>
+        <div className='d-flex mb-4'>
           <div>
             <small className='text-secondary mb-2'>
               Developed by J. Troiano

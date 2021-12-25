@@ -19,7 +19,7 @@ export default function Card(props) {
           {badgeText && <div className='card-badge'>{badgeText}</div>}
           <img
             src={`${process.env.PUBLIC_URL}/assets/images/${coverImg}`}
-            className='card-img-top embed-responsive-item'
+            className='card-img-top embed-responsive-item of-cover'
             alt='Card image cap'
           />
           <div className='card-body'>

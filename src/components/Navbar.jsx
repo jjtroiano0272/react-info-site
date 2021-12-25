@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Link, NavLink, Route, Switch, Redirect } from 'react-router-dom';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import brandLogo from '../image/logoipsum-logo-14.svg';
 import { Command } from 'phosphor-react';
+import Tooltip from '@mui/material/Tooltip';
+import brandLogo from '../image/logoipsum-logo-14.svg';
 
 export default function Navbar({ user, darkMode, toggleDarkMode }) {
   // TODO: Make dynamic to actually detect user's OS. If mobile, do not display!
@@ -11,24 +12,21 @@ export default function Navbar({ user, darkMode, toggleDarkMode }) {
   const [inputSwitch, setInputSwitch] = useState(null);
   const inputRef = useRef(null);
 
-  // TODO: ALSO CHANGE THE EFFIN BOX!
   // Switch theme
-  useHotkeys('CTRL+\\, CMD+\\', () => {
-    console.log('Switch theme');
+  useHotkeys('CTRL+/, CMD+/', () => {
     toggleDarkMode();
   });
 
   // Focus on search box
-  useHotkeys('CTRL+/, CMD+/', () => {
+  useHotkeys('CTRL+K, CMD+K', () => {
     inputRef.current.focus();
-    console.log('search box focused');
   });
 
   return (
     <nav className='navbar navbar-expand-lg px-3 sb-1'>
-      <a className='navbar-brand' href='#'>
+      <Link to='/' className='navbar-brand'>
         <img src={brandLogo} alt='Website logo' />
-      </a>
+      </Link>
 
       <button
         className='navbar-toggler'
@@ -39,15 +37,15 @@ export default function Navbar({ user, darkMode, toggleDarkMode }) {
         aria-expanded='false'
         aria-label='Toggle navigation'
       >
-        <span className='navbar-toggler-icon'></span>
+        <span className='navbar-toggler-icon' />
       </button>
 
       <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
         <ul className='navbar-nav mr-auto mx-2'>
           <li className='nav-item'>
-            <a className='nav-link' href='#'>
+            <Link className='nav-link' to='/travel-journal'>
               Travel Journal
-            </a>
+            </Link>
           </li>
           <li className='nav-item dropdown'>
             <a
@@ -88,14 +86,22 @@ export default function Navbar({ user, darkMode, toggleDarkMode }) {
 
         <ul className='navbar-nav mr-auto ms-auto'>
           <li className='nav-item active my-auto ms-auto align-middle'>
-            <span className='d-inline-block float-left'>
-              <DarkModeSwitch
-                className='react-darkMode-switch'
-                checked={darkMode}
-                onClick={toggleDarkMode}
-                // size={120}
-              />
-            </span>
+            <Tooltip
+              title={
+                !darkMode
+                  ? 'Switch theme to dark mode [CMD + /]'
+                  : 'Switch theme to light mode [CMD + /]'
+              }
+            >
+              <span className='d-inline-block float-left'>
+                <DarkModeSwitch
+                  className='react-darkMode-switch'
+                  checked={darkMode}
+                  onClick={toggleDarkMode}
+                  // size={120}
+                />
+              </span>
+            </Tooltip>
             <span className='d-inline-block'>
               <form className='form-inline my-2 my-lg-0 ms-auto'>
                 <input
@@ -104,8 +110,8 @@ export default function Navbar({ user, darkMode, toggleDarkMode }) {
                   className='form-control mr-sm-2 search-query'
                   placeholder={
                     userOS === 'Mac'
-                      ? `Search [ CMD + / ]`
-                      : `Search [ CTRL + / ]`
+                      ? `Search [ CMD + K ]`
+                      : `Search [ CTRL + K ]`
                   }
                   aria-label='Search'
                 />

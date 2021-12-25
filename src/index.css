@@ -171,6 +171,10 @@ a.nav-link:hover {
   color: var(--secondary-color);
 }
 
+.of-cover {
+  object-fit: cover;
+}
+
 @media (prefers-color-scheme: dark) {
   .App {
     background-color: var(--bg-color);
