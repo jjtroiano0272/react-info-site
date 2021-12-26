@@ -1,14 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from './components/ThemeProvider';
 import App from './App';
-import './index.css';
-// import 'bootstrap';
 import reportWebVitals from './reportWebVitals';
-import 'bootstrap/dist/css/bootstrap.css';
-// TODO: May not be necessary...
-import 'bootstrap/dist/js/bootstrap';
+import './index.css';
+import $ from 'jquery';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+$(document).click((event) => {
+  // const isNavbarOpened = $('#navbar.navbar-collapse').hasClass('collapse show');
+  const isNavbarOpened = $('div.navbar-collapse').hasClass('collapse show');
+
+  // this way, if the navbar is not opened, we don't perform unnecessary operations
+  if (isNavbarOpened) {
+    const clickedElement = $(event.target);
+    const clickedInsideNavbar = clickedElement.closest('nav.navbar').length > 0;
+
+    if (!clickedInsideNavbar) {
+      $('button.navbar-toggler').click();
+    }
+  }
+});
+
+ReactDOM.render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

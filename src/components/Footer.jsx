@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import brandLogo from '../image/logoipsum-logo-14.svg';
+import brandLogo from '../assets/images/logoipsum-logo-14.svg';
 import { CaretDoubleUp } from 'phosphor-react';
 
 export default function Footer() {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Route,
@@ -9,42 +9,27 @@ import {
 } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
-import Quotes from './components/Quotes';
 import Footer from './components/Footer';
-import CardCollection from './components/CardCollection';
 import TravelJournal from './components/TravelJournal';
-import data_experiences from './data_experiences';
+import UserProfile from './components/UserProfile';
+import { ThemeContext } from './components/ThemeProvider';
 import data_journal from './data_journal';
 
 export default function App() {
-  const [darkMode, setDarkMode] = useState(() =>
-    JSON.parse(localStorage.getItem('DARK_MODE'))
-  );
-
-  const toggleDarkMode = () => {
-    localStorage.setItem('DARK_MODE', !darkMode);
-    setDarkMode(!darkMode);
-  };
-
-  useEffect(() => {
-    localStorage.setItem('DARK_MODE', darkMode);
-  }, [darkMode]);
+  const { darkMode, toggleDarkMode } = useContext(ThemeContext);
 
   return (
     <Router>
-      <div className='App' data-theme={darkMode ? 'dark' : 'light'}>
-        <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-        <main className='container'>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route
-              path='/travel-journal'
-              element={<TravelJournal data={data_journal} />}
-            />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        {/* TODO: I want the data source set in the component JSX */}
+        <Route
+          path='/travel-journal'
+          element={<TravelJournal data={data_journal} />}
+        />
+        <Route path='/my-profile' element={<UserProfile />} />
+      </Routes>
     </Router>
   );
 }

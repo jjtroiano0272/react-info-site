@@ -14,9 +14,11 @@ export default function Card(props) {
 
   return (
     <div className='container my-5'>
-      <div className={'card w-18'}>
+      <div className='card bg-light mb-3'>
         <div className='embed-responsive embed-responsive-16-by-9'>
-          {badgeText && <div className='card-badge'>{badgeText}</div>}
+          {badgeText && (
+            <div className='card-badge bg-light text-dark'>{badgeText}</div>
+          )}
           <img
             src={`${process.env.PUBLIC_URL}/assets/images/${coverImg}`}
             className='card-img-top embed-responsive-item of-cover'

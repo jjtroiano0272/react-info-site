@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardCollection from './CardCollection';
 import Quotes from './Quotes';
-import data_experiences from '../data_experiences';
-import heroPhoto from '../image/group-grid-photos.png';
 import Footer from './Footer';
+import data_experiences from '../data_experiences';
+import heroPhoto from '../assets/images/group-grid-photos.png';
 
-export default function Home() {
+export default function Home(props) {
   return (
     <>
       <div className='container'>
@@ -27,6 +27,7 @@ export default function Home() {
         <Quotes src={'dadjokes'} numPosts={3} hr={true} />
         <Quotes src={'antijokes'} numPosts={1} hr={true} />
       </div>
+      <Footer />
     </>
   );
 }
