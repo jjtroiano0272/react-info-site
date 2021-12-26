@@ -1,4 +1,4 @@
-import React, { cloneElement, useState } from 'react';
+import React, { useState } from 'react';
 import { BiMap } from 'react-icons/bi';
 
 export default function JournalEntry(props) {
