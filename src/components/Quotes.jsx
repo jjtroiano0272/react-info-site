@@ -21,13 +21,13 @@ export default function Quotes({ src, numPosts, hr }) {
         }
       });
     });
-  }, [subreddit]);
+  }, []);
 
   return (
     <div className='container my-5'>
       {hr && <hr />}
       {/* Map such that attr stickied which is on the same level as title, is false */}
-      {articles != null
+      {articles !== null
         ? articles.map((article, index) => (
             <Article key={index} article={article.data} />
           ))
