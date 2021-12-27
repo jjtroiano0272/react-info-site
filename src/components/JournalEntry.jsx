@@ -19,7 +19,7 @@ export default function JournalEntry(props) {
       <div className='row'>
         <div className='col-lg-2 col-md-3 d-flex ratio ratio-16x9 mb-3 '>
           <img
-            className='img-fluid rounded w-100 of-cover'
+            className='img-fluid rounded w-100 fit-cover'
             src={`https://source.unsplash.com/${imageID}`}
           />
         </div>

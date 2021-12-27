@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { BsFillStarFill } from 'react-icons/bs';
 
 export default function Card(props) {
-  const { openSpots, location, coverImg, title, price } = props.item;
+  const { openSpots, location, coverImg, title, price, id } = props.item;
   const { rating, reviewCount } = props.item.stats;
 
   let badgeText;
@@ -12,35 +13,31 @@ export default function Card(props) {
     badgeText = 'ONLINE';
   }
 
+  const handleClick = () => {
+    console.log(`Card ${id} button clicked`);
+  };
+
   return (
-    <div className='container-fluid'>
-      <div className='row flex-row flex-nowrap'>
-        <div className='col-xs-12 col-sm-4'>
-          <div className='card bg-light mb-3 my-5 '>
-            <div className='embed-responsive embed-responsive-16-by-9'>
-              {badgeText && (
-                <div className='card-badge bg-light text-dark'>{badgeText}</div>
-              )}
-              <img
-                src={`${process.env.PUBLIC_URL}/assets/images/${coverImg}`}
-                className='card-img-top embed-responsive-item of-cover'
-                alt='Card image cap'
-              />
-              <div className='card-body'>
-                <h5 className='card-title d-flex'>
-                  <BsFillStarFill className='me-2' />
-                  <span>{rating} • </span>
-                  <span className='text-secondary'>({reviewCount})</span>
-                  <span className='ms-2'>{location} </span>
-                </h5>
-                <p className='card-text'>{title}</p>
-                <a href='#' className='btn btn-primary'>
-                  From ${price} a person
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div className='card bg-light mb-3 my-5 mx-4'>
+      {badgeText && (
+        <div className='card-badge bg-light text-dark'>{badgeText}</div>
+      )}
+      <img
+        className='card-img-top fit-cover'
+        src={`${process.env.PUBLIC_URL}/assets/images/${coverImg}`}
+        alt='Card image cap'
+      />
+      <div className='card-body'>
+        <h5 className='card-title d-flex'>
+          <BsFillStarFill className='me-2' />
+          <span>{rating} • </span>
+          <span className='text-secondary'>({reviewCount})</span>
+          <span className='ms-2'>{location} </span>
+        </h5>
+        <p className='card-text'>{title}</p>
+        <Link to='' className='btn btn-primary' onClick={handleClick}>
+          From ${price} a person
+        </Link>
       </div>
     </div>
   );

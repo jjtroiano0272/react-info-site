@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import CardCollection from './CardCollection';
+import CardDeck from './CardDeck';
 import Quotes from './Quotes';
 import Footer from './Footer';
 import data_experiences from '../data_experiences';
@@ -23,7 +23,7 @@ export default function Home(props) {
             </div>
           </main>
         </div>
-        <CardCollection data={data_experiences} />
+        <CardDeck data={data_experiences} />
         <Quotes src={'dadjokes'} numPosts={3} hr={true} />
         <Quotes src={'antijokes'} numPosts={1} hr={true} />
       </div>
