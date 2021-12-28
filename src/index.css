@@ -148,15 +148,20 @@ input.search-dark:focus {
 }
 
 .ox-scroll {
-  overflow-x: scroll;
+  overflow-x: hidden;
 }
 
-.fade-box::after {
+.fade-box {
   position: relative;
-  left: 4em;
-  right: 4em;
-  width: 4em;
-  background: -webkit-linear-gradient(
+  left: 40rem;
+  right: 40rem;
+  width: 40rem;
+
+  background: linear-gradient(
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  /* background: -webkit-linear-gradient(
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 1) 100%
   );
@@ -175,5 +180,5 @@ input.search-dark:focus {
   background-image: -ms-linear-gradient(
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 1) 100%
-  );
+  ); */
 }

@@ -30,6 +30,7 @@ export default function App() {
         />
         <Route path='/my-profile' element={<UserProfile />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }

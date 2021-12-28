@@ -27,7 +27,6 @@ export default function Home(props) {
         <Quotes src={'dadjokes'} numPosts={3} hr={true} />
         <Quotes src={'antijokes'} numPosts={1} hr={true} />
       </div>
-      <Footer />
     </>
   );
 }
